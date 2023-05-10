@@ -30,6 +30,8 @@ RPN::RPN(const RPN &other)
 /*** -------------------------------- DESTRUCTOR --------------------------------*/
 RPN::~RPN()
 {
+	if (rpn.size() != 1)
+		throw "error";
 	std::cout << rpn.top() << std::endl;
 }
 
