@@ -1,14 +1,17 @@
 
-# include "BitcoinExchange.hpp"
+# include "RPN.hpp"
 
 
 
 
-int main(void)
+int main(int ac , char **av)
 {
+	if (ac != 2)
+		return std::cerr << "ERROR " << std::endl, 1;
 	try
 	{
-		BitcoinExchange test;
+		
+		RPN rpn(av[1]);
 	}
 	catch(char const *e)
 	{

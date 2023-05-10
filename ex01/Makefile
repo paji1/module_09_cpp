@@ -1,9 +1,9 @@
 CC = c++ 
 CFLAG =  -std=c++98 -Wall -Wextra -Werror -g  
-SRC = main.cpp BitcoinExchange.cpp
+SRC = main.cpp RPN.cpp
 OBJ = $(addprefix obj/, $(SRC:.cpp=.o))
 
-OUT = btc
+OUT = RPN
 
 all : $(OUT)
 
