@@ -4,9 +4,12 @@
 BitcoinExchange::BitcoinExchange()
 {
 	load_file("./data.csv", data, ",");
-	load_file("./test.txt", data, "|");
-	std::string he("2009-01-02");
-	get_lower(he);
+}
+BitcoinExchange::BitcoinExchange(char **av)
+{
+	load_file("./data.csv", data, ",");
+	for (int i = 1; av[i]; i++)
+		load_file(av[i], data, "|");
 }
 
 BitcoinExchange::BitcoinExchange(BitcoinExchange &other)

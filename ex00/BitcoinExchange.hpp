@@ -13,19 +13,20 @@
 class BitcoinExchange
 {
 private:
-	std::string error;
-	std::map<std::string, double> data;
+	std::	string error;
+	std::	map<std::string, double> data;
 	bool	isdigit(int);
 	bool	is_double(std::string);
-	void	load_file(const char*, std::map<std::string, double>&, const char *);
 	bool	is_inrange(int, int, int);
 	std::string get_date(std::string& output, int sp);
 	double	get_value(std::string& output, int sp, const char *filename);
 	void	exucute(std::string& , double);
 	double get_lower(std::string &key);
+	void	load_file(const char*, std::map<std::string, double>&, const char *);
 
 public:
 	BitcoinExchange();
+	BitcoinExchange(char **av);
 	BitcoinExchange(BitcoinExchange  &);
 	~BitcoinExchange();
 

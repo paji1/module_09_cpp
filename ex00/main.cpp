@@ -4,11 +4,13 @@
 
 
 
-int main(void)
+int main(int ac, char **av)
 {
+	if (ac < 2)
+		return 1;
 	try
 	{
-		BitcoinExchange test;
+		BitcoinExchange test(av);
 	}
 	catch(char const *e)
 	{
