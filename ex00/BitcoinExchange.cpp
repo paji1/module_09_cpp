@@ -144,10 +144,19 @@ double BitcoinExchange::get_lower(std::string &key)
 	}
 	catch (...)
 	{
-		std::map<std::string, double>::iterator it = data.upper_bound(key);
-
+		std::map<std::string, double>::iterator it = data.lower_bound(key);
+		
 		if (it == data.end())
 			throw "not found";
+		it--;
+		try 
+		{
+			data.at((*it).first);
+		}
+		catch (...)
+		{
+			throw "not found";
+		}
 		return (*it).second;
 	}
 }
