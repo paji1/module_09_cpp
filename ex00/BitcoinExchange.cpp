@@ -48,6 +48,7 @@ bool BitcoinExchange::isdigit(int c)
 
 std::string trim(const std::string &s)
 {
+	
 	std::string::const_iterator start = s.begin();
 	while (start != s.end() && std::isspace(*start))
 		start++;
@@ -148,15 +149,9 @@ double BitcoinExchange::get_lower(std::string &key)
 		
 		if (it == data.end())
 			throw "not found";
+		if (it == data.begin())
+			throw "lower not found";
 		it--;
-		try 
-		{
-			data.at((*it).first);
-		}
-		catch (...)
-		{
-			throw "not found";
-		}
 		return (*it).second;
 	}
 }
@@ -176,17 +171,14 @@ void BitcoinExchange::load_file(const char *filename, std::map<std::string, doub
 	if (!csvfile.is_open())
 		throw "faild to open file";
 
-	{
-		std::string output;
-		std::getline(csvfile, output);
-	}
 	for (std::string output; std::getline(csvfile, output);)
 	{
 		if (csvfile.fail() || csvfile.bad())
 			throw "filed";
-		if (output.empty())
+		if (output.empty() || (output == "date,exchange_rate" && std::string(filename) == "./data.csv") || output == "date | value")
 			continue;
-		try
+		
+ 		try
 		{
 			sp = -1;
 			if (std::string(filename) != "./data.csv" && output.find(" | ") == output.npos)
